@@ -9,6 +9,62 @@ WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 SoftwareSerial ser(D1,D2,false,8);
 
+void setup() {
+  Serial.begin(9600);
+  ser.begin(9600);
+
+  wifi_reconnect();
+
+  client.setServer(MQTT_SERVER, MQTT_PORT);
+  client.setCallback(msgReceived);
+}
+
+void loop() {
+  if(WiFi.status() != WL_CONNECTED) {  
+    wifi_reconnect();
+  }
+  if(!client.connected()) {
+    mqtt_reconnect();
+  }
+  
+  client.loop();
+}
+
+void wifi_reconnect() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(SSID, PASSWORD);
+  //WiFi.begin(SSID);
+  Serial.print("Connecting...");
+
+  while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+  }
+  Serial.println();
+
+  Serial.print("Connected, IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void mqtt_reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect
+    if (client.connect(HOSTNAME,MQTT_USER,MQTT_PASS)) {
+      Serial.println("connected");
+      client.publish("home/clock","Connected");
+      client.subscribe("home/clock/#");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
 /* Clock face positions:
  *  0: Home
  *  1: Lessons
@@ -75,62 +131,6 @@ void sendData(char target, char loc[]) {
   ser.write(target);
   ser.write(pos);
   ser.write('#');
-}
-
-void wifi_reconnect() {
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(SSID, PASSWORD);
-  //WiFi.begin(SSID);
-  Serial.print("Connecting...");
-
-  while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(".");
-  }
-  Serial.println();
-
-  Serial.print("Connected, IP address: ");
-  Serial.println(WiFi.localIP());
-}
-
-void mqtt_reconnect() {
-  // Loop until we're reconnected
-  while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    // Attempt to connect
-    if (client.connect(HOSTNAME,MQTT_USER,MQTT_PASS)) {
-      Serial.println("connected");
-      client.publish("home/clock","Connected");
-      client.subscribe("home/clock/#");
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      // Wait 5 seconds before retrying
-      delay(5000);
-    }
-  }
-}
-
-void setup() {
-  Serial.begin(9600);
-  ser.begin(9600);
-
-  wifi_reconnect();
-
-  client.setServer(MQTT_SERVER, 1883);
-  client.setCallback(msgReceived);
-}
-
-void loop() {
-  if(WiFi.status() != WL_CONNECTED) {  
-    wifi_reconnect();
-  }
-  if(!client.connected()) {
-    mqtt_reconnect();
-  }
-  
-  client.loop();
 }
 
 void msgReceived(char* topic, byte* payload, unsigned int length) {
