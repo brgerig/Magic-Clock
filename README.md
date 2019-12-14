@@ -13,6 +13,14 @@ In the Harry Potter books and movies, Harry's friends, the Weasleys, have a magi
 * Jumper wires (https://www.amazon.com/dp/B01L5ULRUA)
 * 6v, 2A power adapter (https://www.amazon.com/dp/B01GCI99OG)
 * Brass tubes: 1/4", 7/32", 3/16", 5/32" (https://www.amazon.com/dp/B07VLNMCRC)
+* #10 threaded rod
+* #10 nuts
+* #10 tee nuts
+* .5x3mm machine screws
+* .5x3mm nuts
+* Printable transparency sheets
+* A bunch of 3d printed stuff
+* Misc paint, stain, and finishing supplies
 
 # The Code
 
