@@ -1,6 +1,6 @@
-<p align="center"><img src=https://i.imgur.com/KgbZ5a8.gif</img></p>
-
 # Magic-Clock
+
+<p align="center"><img src=https://i.imgur.com/KgbZ5a8.gif</img></p>
 
 In the Harry Potter books and movies, Harry's friends, the Weasleys, have a magical clock that tracks where all of the family members are. This project creates a functional version of that clock, using data from phone GPS by way of an MQTT message broker. There are two versions of the code: one uses OwnTracks data directly from MQTT, and the other uses custom MQTT topics that can be sent from any system. I use Home Assistant and its Zones.
 
