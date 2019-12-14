@@ -48,7 +48,7 @@ If using Home Assistant, feel free to use any location logic that you want. I us
 
 # The Wiring
 
-`Wiring diagram.png` contains all of the hookup information. This entire project is designed to be created with almost no wiring, and no annoying extra resistors or other little compnents. Just hook up the jumper wires and you're good to go. You can of course opt to solder everything if desired. The only non point-to-point wiring is the power, which needs to be distributed from the power jack to the NodeMCU and each of the ULN2003 boards. The Arduino is powered from the NodeMCU.
+`Wiring diagram.png` contains all of the hookup information. This entire project is designed to be created with almost no soldering, and no annoying extra resistors or other little compnents. Just hook up the jumper wires and you're good to go. You can of course opt to solder everything if desired. The only non point-to-point wiring is the power, which needs to be distributed from the power jack to the NodeMCU and each of the ULN2003 boards. The Arduino is powered from the NodeMCU.
 
 # The Build
 
