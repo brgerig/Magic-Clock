@@ -52,4 +52,6 @@ If using Home Assistant, feel free to use any location logic that you want. I us
 
 # The Build
 
-I've documented this [here](https://imgur.com/a/wX98fOc). The files for 3d printing are all in the `3d print files` folder, with the exception of the clock hands, which were generously shared with my by Pascal Böcker of [Printable Props](https://printableprops.jimdo.com/en/harry-potter/weasley-clock/). Additionally, the clock face was purchased from a small laser-cut items vendor at a convention, so I'm unfortunately not able to provide a link to it.
+I've documented this [here](https://imgur.com/a/wX98fOc). The files for 3d printing are all in the `3d print files` folder, with the exception of the clock hands, which were generously shared with my by Pascal Böcker of [Printable Props](https://printableprops.jimdo.com/en/harry-potter/weasley-clock/).
+
+The clock face was purchased from a [Hrothgar's Hoard](https://www.etsy.com/shop/HrothgarsHoardGames)
